@@ -75,14 +75,16 @@ export const Login = () =>{
             <div className="col-md-4 form " >
                 <section className='mt-2'>
                     <h3 >{register ? 'Registro' : 'Inicio de Sesión'}</h3>
+                    {/*Esta es una validación*/}
                     {validado ? <p></p> : 
-                        <p style={{background:'#faa', fontSize:'3vh', textAlign:'center'}}>
-                            Email o contraseña errado intenta de nuevo.
+                        <p style={{opacity:'85%', background:'#faa', fontSize:'2.5vh', textAlign:'center', borderRadius:'5px', color:'#711'}}>
+                            Email o contraseña errada
                         </p>
                     }
+                    {/*Esta es otra validación*/}
                     {shortPassword ? 
-                        <p style={{background:'#faa', fontSize:'3vh', textAlign:'center'}}>
-                            Contraseña mínima de 6 dígitos.
+                        <p style={{opacity:'85%',background:'#faa', fontSize:'2.5vh', textAlign:'center', borderRadius:'5px', color:'#711'}}>
+                            Contraseña mínima de 6 dígitos
                         </p> 
                         : <p></p>
                     }
