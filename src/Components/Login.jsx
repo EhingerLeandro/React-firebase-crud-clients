@@ -13,6 +13,8 @@ const auth = getAuth(firebaseApp);
 export const Login = () =>{
 
     const [register, setRegister] = useState(false);
+    const [validado, setValidado] = useState(true);
+    const [shortPassword, setShortPassword] = useState(false);
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -20,16 +22,34 @@ export const Login = () =>{
         const contraseña = e.target.contraseña.value;
         
         if(register){
-            await createUserWithEmailAndPassword(auth, email, contraseña);
+            try{
+                await createUserWithEmailAndPassword(auth, email, contraseña);
+                setShortPassword(false);
+            }catch{
+                setShortPassword(true);
+                console.log('error al crear usuario')
+            }
         }else{
-            await signInWithEmailAndPassword(auth, email, contraseña);
+            try{
+                await signInWithEmailAndPassword(auth, email, contraseña);
+                setValidado(true);
+            }catch{
+                setValidado(false);
+                console.log('error al intentar ingresar usuario');
+            }
         }
     };
+
+    const isRegistered =()=>{
+        setRegister(!register);
+        setValidado(true);
+        setShortPassword(false);
+    }
 
     return(
         <div className='row container px-4'>
             <div className="col-md-8 carousel-section ">
-                <div id="carouselExampleIndicators" className="carousel slide carousel-all" data-bs-ride="carousel" data-bs-interval="4000">
+                <section id="carouselExampleIndicators" className="carousel slide carousel-all" data-bs-ride="carousel" data-bs-interval="2500">
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -50,11 +70,22 @@ export const Login = () =>{
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Next</span>
                     </button>
-                </div>
+                </section>
             </div>
             <div className="col-md-4 form " >
-                <div className='mt-2'>
+                <section className='mt-2'>
                     <h3 >{register ? 'Registro' : 'Inicio de Sesión'}</h3>
+                    {validado ? <p></p> : 
+                        <p style={{background:'#faa', fontSize:'3vh', textAlign:'center'}}>
+                            Email o contraseña errado intenta de nuevo.
+                        </p>
+                    }
+                    {shortPassword ? 
+                        <p style={{background:'#faa', fontSize:'3vh', textAlign:'center'}}>
+                            Contraseña mínima de 6 dígitos.
+                        </p> 
+                        : <p></p>
+                    }
                     <form onSubmit={handleSubmit}>
                         <div className='mb-2'>
                             <label className='form-label'> Email</label><br/>
@@ -69,11 +100,11 @@ export const Login = () =>{
                         </button>
                     </form>
                     <div>
-                        <button className='btn btn-secondary mt-2 form-control' onClick={()=>setRegister(!register)}>
+                        <button className='btn btn-secondary mt-2 form-control' onClick={isRegistered}>
                             {register ? 'Ya tienes cuenta? Inicia Sesión':'No tienes cuenta? Registrate'}
                         </button>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
     )

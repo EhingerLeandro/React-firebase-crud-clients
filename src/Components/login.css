@@ -6,6 +6,7 @@
     border:2px solid #eee;
     background-color: #eee;
     border-radius:10px;
+    margin-bottom:10px;
 }
 
 .form{
@@ -22,10 +23,17 @@
     margin-left:5px;
 }
 
-
 .image-login{
     margin-left:10%;
     margin-right:10%;
     width:80%;
     height:80vh;
+}
+
+@media screen and (max-width: 750px){
+    .image-login{
+        margin-left:10%;
+        margin-right:10%;
+        height:auto;
+    }
 }
