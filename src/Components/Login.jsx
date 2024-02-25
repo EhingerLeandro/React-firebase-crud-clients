@@ -23,16 +23,18 @@ export const Login = () =>{
         
         if(register){
             try{
-                await createUserWithEmailAndPassword(auth, email, contraseña);
                 setShortPassword(false);
+                await createUserWithEmailAndPassword(auth, email, contraseña);
+                
             }catch{
                 setShortPassword(true);
                 console.log('error al crear usuario')
             }
         }else{
             try{
-                await signInWithEmailAndPassword(auth, email, contraseña);
                 setValidado(true);
+                await signInWithEmailAndPassword(auth, email, contraseña);
+                
             }catch{
                 setValidado(false);
                 console.log('error al intentar ingresar usuario');
@@ -75,13 +77,13 @@ export const Login = () =>{
             <div className="col-md-4 form " >
                 <section className='mt-2'>
                     <h3 >{register ? 'Registro' : 'Inicio de Sesión'}</h3>
-                    {/*Esta es una validación*/}
+                    {/*Esta es una validación cuando el Email o contraseña es incorrecta.*/}
                     {validado ? <p></p> : 
                         <p style={{opacity:'85%', background:'#faa', fontSize:'2.5vh', textAlign:'center', borderRadius:'5px', color:'#711'}}>
                             Email o contraseña errada
                         </p>
                     }
-                    {/*Esta es otra validación*/}
+                    {/*Esta es otra validación cuando la contraseña es menor a 6 digitos.*/}
                     {shortPassword ? 
                         <p style={{opacity:'85%',background:'#faa', fontSize:'2.5vh', textAlign:'center', borderRadius:'5px', color:'#711'}}>
                             Contraseña mínima de 6 dígitos
