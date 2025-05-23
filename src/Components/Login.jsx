@@ -51,12 +51,12 @@ export const Login = () =>{
     return(
         <div className='row container px-4'>
             <div className="col-md-8 carousel-section ">
-                <section id="carouselExampleIndicators" className="carousel slide carousel-all" data-bs-ride="carousel" data-bs-interval="2500">
+                <section id="carouselExampleIndicators" className="carousel slide carousel-all" data-bs-ride="carousel" data-bs-interval="3500">
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     </div>
-                    <div className="carousel-inner">
+                    <div className="carousel-inner ">
                         <div className="carousel-item active">
                             <img src={users2} className="image-login" alt="..."/>
                         </div>
@@ -64,11 +64,11 @@ export const Login = () =>{
                             <img src={users3} className="image-login" alt="..."/>
                         </div>
                     </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <button className="carousel-control-prev carous-flow" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Previous</span>
                     </button>
-                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <button className="carousel-control-next carous-flow" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Next</span>
                     </button>

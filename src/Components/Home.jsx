@@ -2,8 +2,8 @@ import {useState, useEffect } from "react";
 import appFirebase from '../Firebase/Firebase';
 import{getAuth, signOut} from 'firebase/auth';
 import {ColorRing} from 'react-loader-spinner';
-import {getFirestore, collection, getDocs,
-    addDoc, getDoc, doc, deleteDoc, setDoc} from 'firebase/firestore';
+import {getFirestore, collection, getDocs, doc,
+     getDoc, addDoc, deleteDoc, setDoc} from 'firebase/firestore';
 
 const auth = getAuth(appFirebase);
 const db = getFirestore(appFirebase);
@@ -68,7 +68,7 @@ const Home =({emailUser})=>{
         }
     }
 
-    //Función para renderizar lista de clientes
+    //Función para renderizar lista de clientes o doumentos.
     useEffect(()=>{
         const getLista = async() =>{
             setLoadingList(true)
@@ -89,6 +89,7 @@ const Home =({emailUser})=>{
         getLista()
     }, [change]);
 
+    //Esta función permite obtener un documento en particular.
     const getOne = async(id) =>{
         try{
             const snapId = await getDoc(doc(db, 'clients', id));

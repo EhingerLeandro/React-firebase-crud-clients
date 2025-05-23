@@ -6,6 +6,7 @@
     border:2px solid #eee;
     background-color: #eee;
     border-radius:10px;
+    margin-top:15px;
     margin-bottom:10px;
 }
 
@@ -24,16 +25,20 @@
 }
 
 .image-login{
-    margin-left:10%;
-    margin-right:10%;
-    width:80%;
-    height:80vh;
+    margin-left:30%;
+    margin-right:25%;
+    width:45%;
+    height:60vh;
+}
+
+.carous-flow{
+    background-color:#7776
 }
 
 @media screen and (max-width: 750px){
     .image-login{
-        margin-left:10%;
-        margin-right:10%;
+        margin-left:30%;
+    margin-right:25%;
         height:auto;
     }
 }

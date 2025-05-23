@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div>
-      <h2  style={{textAlign:'center', margin:'5vh 0px'}}>CRUD React & Firebase</h2>
+      <h2  style={{textAlign:'center', margin:'5vh 0px', color:'#339', fontWeight:'bolder'}}>CRUD with React & Firebase</h2>
       {user ? <Home emailUser={user.email}/> : <Login/>}
     </div>
   )
